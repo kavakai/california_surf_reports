@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const fecthLocationsSlice = createSlice({
+export const fetchLocationsSlice = createSlice({
   name: 'fetchLocations',
   initialState: {
     locations: [],
   },
   reducers: {
     setLocations: (state, action) => {
-      state.locations = action.payload;
+        state.locations = [...action.payload.locations];
+      }
     }
-  }
 });
 
 
-export const { setLocations } = fecthLocationsSlice.actions;
-export default fecthLocationsSlice.reducer;
+export const { setLocations } = fetchLocationsSlice.actions;
+export default fetchLocationsSlice.reducer;

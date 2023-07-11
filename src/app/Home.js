@@ -12,12 +12,12 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchLocations = async () => {
-      const res = await fetch('https://services.surfline.com/kbyg/spots/forecasts?spotId=5842041f4e65fad6a7708b2b&days=1&intervalHours=24&maxHeights=false&accesstoken=9e6e3a0e9f5b4f0c9b5b2b0a0e4e8b6b');
+      const res = await fetch('https://api.spitcast.com/api/spot');
       const data = await res.json();
-      dispatch(setLocations(data.data));
+      dispatch(setLocations({type: 'fetchLocations/setLocations', locations: data}));
     }
     fetchLocations();
-  }, [dispatch, locations]);
+  }, []);
   
   return (
     <div className='container mx-auto flex flex-col justify-around items-center h-screen'>

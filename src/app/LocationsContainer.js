@@ -9,13 +9,15 @@ export const LocationsContainer = () => {
     return (
       <Locations
         key={location.spot_id} 
-        location={location} 
+        spot_name={location.spot_name}
+        street_address={location.street_address}
+        id={location.spot_id}
       />
     )
   });
 
   return (
-    <div>
+    <div className='container mx-auto flex flex-col justify-around items-center my-3'>
       {spots}
     </div>
   )

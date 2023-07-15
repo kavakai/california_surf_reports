@@ -8,10 +8,10 @@ export const LocationsContainer = () => {
   const spots = locations.map((location) => { 
     return (
       <Locations
-        key={location.spot_id} 
+        key={location._id} 
         spot_name={location.spot_name}
         street_address={location.street_address}
-        id={location.spot_id}
+        id={location._id}
       />
     )
   });

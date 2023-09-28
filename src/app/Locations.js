@@ -5,12 +5,19 @@ import { useDispatch } from 'react-redux';
 export const Locations = ({spot_name, street_address, id}) => {
   const dispatch = useDispatch();
   const date = new Date();
+  const lat = 58.7984;
+  const lng = 17.8081;
+  const params = 'windSpeed';
 
   const handleClick = (e) => {
     e.preventDefault();
     
     const fetchSingleLocation = async () => {
-      const res = await fetch(`https://api.spitcast.com/api/spot_forecast/${id}/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`);
+      const res = await fetch(`https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`, {
+        headers: {
+          'Authorization': process.env.API_KEY
+        }
+      });
       const data = await res.json();
       dispatch(setSingleLocation({type: 'fetchLocations/setSingleLocation', singleLocation: data}));
     }
